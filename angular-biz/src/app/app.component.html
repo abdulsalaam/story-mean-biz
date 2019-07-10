@@ -1,0 +1,33 @@
+﻿<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" routerLink="/story">Stories</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav>
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="!currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/allstories">All stories</a>
+        <a class="nav-item nav-link" routerLink="/login">Login</a>
+    </div>
+</nav>
+
+<!-- main app container -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 offset-sm-0">
+                <alert></alert>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- credits -->
+<div class="text-center">
+    <p>
+        <a href="#" target="_top">biz2credit:demo</a> |  <a href="http://biz2credit.com" target="_top">biz2credit.com</a>
+    </p>
+</div>

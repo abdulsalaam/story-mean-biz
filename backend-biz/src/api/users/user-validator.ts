@@ -1,0 +1,23 @@
+/* @abdul : 28-09-2018 */
+import * as Joi from "joi";
+
+export const createUserModel = Joi.object().keys({
+    username: Joi.string().email().trim().required(),
+    name: Joi.string().required(),
+    userType: Joi.string(),
+    password: Joi.string().trim().required()
+});
+
+export const updateUserModel = Joi.object().keys({
+    username: Joi.string().email().trim(),
+    name: Joi.string(),
+    userType: Joi.string(),
+    password: Joi.string().trim()
+});
+
+export const loginUserModel = Joi.object().keys({
+    username: Joi.string().email().required(),
+    password: Joi.string().trim().required()
+});
+
+export const jwtValidator = Joi.object({'authorization': Joi.string().required()}).unknown();

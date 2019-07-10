@@ -1,0 +1,39 @@
+<div class="container">
+  <h3 mat-dialog-title>Story id: {{data.id}}</h3>
+<pre>{{data | json}}</pre>
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+
+    <!--Textarea for demo purposes-->
+    <div class="form">
+      <mat-form-field color="accent">
+        <textarea matInput #input class="form-control" placeholder="Title" [(ngModel)]="data.title" name="title" required ></textarea>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div class="form">
+        <mat-form-field color="accent">
+          <input matInput placeholder="Description" [(ngModel)]="data.description" name="description">
+        </mat-form-field>
+    </div>
+    
+    <div class="form">
+    <div class="custom-control custom-radio">
+      <input id="published" type="radio" class="custom-control-input" [value]="true" name="published" [(ngModel)]="data.published">
+      <label class="custom-control-label" for="published">Published</label>
+   </div>
+
+   <div class="custom-control custom-radio">
+      <input id="unpublished" type="radio" class="custom-control-input" [value]="false" name="published" [(ngModel)]="data.published">
+      <label class="custom-control-label" for="unpublished">UnPublished</label>
+   </div>
+   </div>
+    
+
+    <div mat-dialog-actions>
+      <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="stopEdit()">Save</button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+  </form>
+</div>
